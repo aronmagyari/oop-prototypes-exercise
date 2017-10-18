@@ -28,19 +28,6 @@ Examples:
     person.family.length // 1
 */
 
-// PART II 
-
-// 1 - Implement your own version of Array.prototype.map. The function should accept a callback and return a new array with the result of the callback for each value in the array. 
-
-/* 2 - Implement a function called reverse that reverses a string and place it on the String.prototype
-
-Examples:
-    "test".reverse() // "tset"
-    "tacocat".reverse() // "tacocat"
-
-
-*/
-
 
 var Person = function(firstName, lastName, favoriteColor, favoriteNumber) {
 	this.firstName = firstName;
@@ -58,4 +45,30 @@ Person.prototype.addToFamily = function(person) {
 		this.family.push(person);
 	}
 	return this.family.length;
+}
+
+
+// PART II 
+
+// 1 - Implement your own version of Array.prototype.map. The function should accept a callback and return a new array with the result of the callback for each value in the array. 
+
+/* 2 - Implement a function called reverse that reverses a string and place it on the String.prototype
+
+Examples:
+    "test".reverse() // "tset"
+    "tacocat".reverse() // "tacocat"
+
+
+*/
+
+Array.prototype.map = function(callback) {
+	var newArr = [];
+	for(var i = 0; i < this.length; i++) {
+		newArr[i] = callback(this[i], i, this);
+	}
+	return newArr;
+}
+
+String.prototype.reverse = function() {
+	return this.split("").reverse().join("");
 }
