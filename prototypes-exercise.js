@@ -8,6 +8,7 @@ Examples:
 
 */
 
+
 // 3 -  Add a property on the object created from the Person function called family which is an empty array.
 
 /* 4 - Add a function on the Person.prototype called addToFamily which adds an object constructed from the Person constructor to the family array. To make sure that the object you are adding is an object construced from the Person constructor (HINT - take a look at the instanceof keyword). Make sure that your family array does not include duplicates! This method should return the length of the family array.
@@ -36,4 +37,25 @@ Examples:
 Examples:
     "test".reverse() // "tset"
     "tacocat".reverse() // "tacocat"
+
+
 */
+
+
+var Person = function(firstName, lastName, favoriteColor, favoriteNumber) {
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.favoriteColor = favoriteColor;
+	this.favoriteNumber = favoriteNumber;
+	this.family = [];
+}
+
+Person.prototype.fullName = function() {
+	return this.firstName + " " + this.lastName;
+}
+Person.prototype.addToFamily = function(person) {
+	if (person instanceof Person && this.family.indexOf(person) === -1) {
+		this.family.push(person);
+	}
+	return this.family.length;
+}
